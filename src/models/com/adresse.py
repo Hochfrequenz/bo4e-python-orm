@@ -1,7 +1,9 @@
 from typing import Optional
 
+from bo4e.enum.landescode import Landescode
 from sqlalchemy import Column, Enum, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+import sqlalchemy.dialects.postgresql as pg
 
 from db.base_class import Base
 
@@ -25,7 +27,8 @@ class Adresse(Base):
     #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     co_ergaenzung: Mapped[Optional[str]] = mapped_column(String(30))
     #: Offizieller ISO-Landescode
-    #landescode = Column(Enum(Landescode), default=Landescode.DE)
+    landescode:  Mapped[Optional[Landescode]] = mapped_column(pg.ENUM(Landescode, name="Landescode"))
+    #todo: add default
     # todo: add xor for strasse oder postfach
 
     # Define relationships
