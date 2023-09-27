@@ -1,20 +1,23 @@
+import enum
 from typing import Optional
 
-from sqlalchemy import ARRAY, Boolean, Column, Enum, ForeignKey, String
-from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
+import sqlalchemy.dialects.postgresql as pg
+from bo4e.enum.anrede import Anrede
+from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e.enum.kontaktart import Kontaktart
+from sqlalchemy import Boolean, ForeignKey, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.base_class import Base
-
 
 class Geschaeftspartner(Base):
     __tablename__ = "geschaeftspartner"
     id: Mapped[int] = mapped_column(primary_key=True)  # need a primary key
     name1: Mapped[str] = mapped_column(String(30))
     gewerbekennzeichnung: Mapped[bool] = mapped_column(Boolean)
-    #geschaeftspartnerrolle = Column(ARRAY(Enum(Geschaeftspartnerrolle)), nullable=False)
-    # todo: https://docs.sqlalchemy.org/en/14/core/type_basics.html#sqlalchemy.types.ARRAY
-    # Detecting Changes in ARRAY columns when using the ORM
-    #anrede = Column(Enum(Anrede))
+    geschaeftspartnerrolle: Mapped[list[Geschaeftspartnerrolle]] = mapped_column(pg.ARRAY(pg.ENUM(Geschaeftspartnerrolle, name="Geschaeftspartnerrolle")), nullable=False)
+    anrede: Mapped[Optional[Anrede]] = mapped_column(pg.ENUM(Anrede, name="Anrede"), nullable=True)
+
     name2: Mapped[Optional[str]] = mapped_column(String(30))
     """
     Zweiter Teil des Namens.
@@ -33,7 +36,7 @@ class Geschaeftspartner(Base):
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
     amtsgericht: Mapped[Optional[str]] = mapped_column(String(30))
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    #kontaktweg = Column(ARRAY(Enum(Kontaktart)))
+    kontaktweg: Mapped[Optional[Kontaktart]] = mapped_column(pg.ENUM(Kontaktart, name="Kontaktart"))
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     umsatzsteuer_id: Mapped[Optional[str]] = mapped_column(String(30))
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
@@ -45,8 +48,8 @@ class Geschaeftspartner(Base):
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
 
     # Define a one-to-one relationship with Adresse
-    #adresse_id = mapped_column(ForeignKey("adresse.id"))
-    #partneradresse: Mapped["Adresse"] = relationship(back_populates="geschaeftspartner")
+    adresse_id = mapped_column(ForeignKey("adresse.id"))
+    partneradresse: Mapped["Adresse"] = relationship(back_populates="geschaeftspartner")
 
     def __repr__(self) -> str:
         return f"Geschaeftspartner(id={self.id!r}, Name1={self.name1!r})"
