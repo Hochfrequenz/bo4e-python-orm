@@ -1,11 +1,10 @@
-import enum
 from typing import Optional
 
-import sqlalchemy.dialects.postgresql as pg
+
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
-from sqlalchemy import Boolean, ForeignKey, String
+from sqlalchemy import Boolean, ForeignKey, String, Enum, ARRAY
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.base_class import Base
@@ -15,8 +14,9 @@ class Geschaeftspartner(Base):
     id: Mapped[int] = mapped_column(primary_key=True)  # need a primary key
     name1: Mapped[str] = mapped_column(String(30))
     gewerbekennzeichnung: Mapped[bool] = mapped_column(Boolean)
-    geschaeftspartnerrolle: Mapped[list[Geschaeftspartnerrolle]] = mapped_column(pg.ARRAY(pg.ENUM(Geschaeftspartnerrolle, name="Geschaeftspartnerrolle")), nullable=False)
-    anrede: Mapped[Optional[Anrede]] = mapped_column(pg.ENUM(Anrede, name="Anrede"), nullable=True)
+    geschaeftspartnerrolle: Mapped[list[Geschaeftspartnerrolle]] = mapped_column(ARRAY(Enum(Geschaeftspartnerrolle, name="Geschaeftspartnerrolle")), nullable=False)
+
+    anrede: Mapped[Optional[Anrede]] = mapped_column(Enum(Anrede, name="Anrede"), nullable=True)
 
     name2: Mapped[Optional[str]] = mapped_column(String(30))
     """
@@ -36,7 +36,7 @@ class Geschaeftspartner(Base):
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
     amtsgericht: Mapped[Optional[str]] = mapped_column(String(30))
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: Mapped[Optional[Kontaktart]] = mapped_column(pg.ENUM(Kontaktart, name="Kontaktart"))
+    kontaktweg: Mapped[Optional[Kontaktart]] = mapped_column(Enum(Kontaktart, name="Kontaktart"))
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     umsatzsteuer_id: Mapped[Optional[str]] = mapped_column(String(30))
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"

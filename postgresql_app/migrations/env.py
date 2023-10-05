@@ -1,9 +1,10 @@
+#import alembic_postgresql_enum
 from logging.config import fileConfig
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from db.auxiliary import get_url
+from postgresql_app.auxiliary import get_url
 from db.base import Base
 
 # this is the Alembic Config object, which provides

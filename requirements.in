@@ -6,3 +6,5 @@ pydantic>=2.0.0
 pyhumps
 python-dotenv
 SQLAlchemy
+pymysql
+alembic_postgresql_enum

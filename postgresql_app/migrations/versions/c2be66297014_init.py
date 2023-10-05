@@ -1,19 +1,19 @@
-"""init adresse and geschaeftspartner
+"""init
 
-Revision ID: 5b34fed21cc5
-Revises: 463cdbe75f57
-Create Date: 2023-09-27 09:19:30.381011
+Revision ID: c2be66297014
+Revises: 
+Create Date: 2023-09-27 16:36:00.514170
 
 """
 from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects import postgresql
+
 
 # revision identifiers, used by Alembic.
-revision: str = "5b34fed21cc5"
-down_revision: Union[str, None] = "463cdbe75f57"
+revision: str = "c2be66297014"
+down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -33,7 +33,7 @@ def upgrade() -> None:
         sa.Column("co_ergaenzung", sa.String(length=30), nullable=True),
         sa.Column(
             "landescode",
-            postgresql.ENUM(
+            sa.Enum(
                 "AF",
                 "AX",
                 "AL",
@@ -297,29 +297,30 @@ def upgrade() -> None:
         sa.Column("gewerbekennzeichnung", sa.Boolean(), nullable=False),
         sa.Column(
             "geschaeftspartnerrolle",
-            postgresql.ARRAY(
-                postgresql.ENUM(
+            sa.ARRAY(
+                sa.Enum(
                     "LIEFERANT", "DIENSTLEISTER", "KUNDE", "INTERESSENT", "MARKTPARTNER", name="Geschaeftspartnerrolle"
                 )
             ),
             nullable=False,
         ),
-        sa.Column(
-            "anrede", postgresql.ENUM("HERR", "FRAU", "EHELEUTE", "FIRMA", "INDIVIDUELL", name="Anrede"), nullable=True
-        ),
+        sa.Column("anrede", sa.Enum("HERR", "FRAU", "EHELEUTE", "FIRMA", "INDIVIDUELL", name="Anrede"), nullable=True),
         sa.Column("name2", sa.String(length=30), nullable=True),
         sa.Column("name3", sa.String(length=30), nullable=True),
         sa.Column("hrnummer", sa.String(length=30), nullable=True),
         sa.Column("amtsgericht", sa.String(length=30), nullable=True),
         sa.Column(
-            "kontaktweg",
-            postgresql.ENUM("ANSCHREIBEN", "TELEFONAT", "FAX", "E_MAIL", "SMS", name="Kontaktart"),
-            nullable=True,
+            "kontaktweg", sa.Enum("ANSCHREIBEN", "TELEFONAT", "FAX", "E_MAIL", "SMS", name="Kontaktart"), nullable=True
         ),
         sa.Column("umsatzsteuer_id", sa.String(length=30), nullable=True),
         sa.Column("glaeubiger_id", sa.String(length=30), nullable=True),
         sa.Column("e_mail_adresse", sa.String(length=30), nullable=True),
         sa.Column("website", sa.String(length=30), nullable=True),
+        sa.Column("adresse_id", sa.Integer(), nullable=True),
+        sa.ForeignKeyConstraint(
+            ["adresse_id"],
+            ["adresse.id"],
+        ),
         sa.PrimaryKeyConstraint("id"),
     )
     # ### end Alembic commands ###
