@@ -105,6 +105,6 @@ def test_update_address( db_engine = engine ):
     assert updated_address.postleitzahl == "67890"
     assert updated_address.ort == "Neue Stadt"
 
-    session.delete(new_address)
+    #session.delete(new_address)
     session.commit()
     session.close()
