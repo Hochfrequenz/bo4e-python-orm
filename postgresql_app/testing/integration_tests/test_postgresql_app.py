@@ -1,16 +1,15 @@
-import pytest
+"""
+Integration tests for the postgresql_app
+"""
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.landescode import Landescode
-
-# from db.base import Base
 from sqlalchemy import create_engine, inspect
-from sqlalchemy.engine.base import Engine
 from sqlalchemy.engine.reflection import Inspector
 from sqlalchemy.orm import sessionmaker
 
-from models.bo.geschaeftspartner import Geschaeftspartner
-from models.com.adresse import Adresse
+from models.bo.geschaeftspartner import Geschaeftspartner  # type: ignore
+from models.com.adresse import Adresse  # type: ignore
 from postgresql_app.auxiliary import get_url
 
 # create engine
@@ -18,6 +17,9 @@ engine = create_engine(get_url())
 
 
 def test_existence_of_tables(db_engine=engine):
+    """
+    test for the existence of tables
+    """
     insp: Inspector = inspect(db_engine)
 
     name_of_tables = insp.get_table_names()
@@ -27,8 +29,11 @@ def test_existence_of_tables(db_engine=engine):
 
 
 def test_create_and_retrieve_address(db_engine=engine):
-    Session = sessionmaker(bind=db_engine)
-    session = Session()
+    """
+    test to create and retrieve an address
+    """
+    session = sessionmaker(bind=db_engine)
+    session = session()
     # Create an address record
     new_address = Adresse(
         postleitzahl="12345", ort="Teststadt", strasse="Teststraße", hausnummer="42", landescode=Landescode.DE
@@ -52,8 +57,11 @@ def test_create_and_retrieve_address(db_engine=engine):
 
 
 def test_create_and_retrieve_geschaeftspartner(db_engine=engine):
-    Session = sessionmaker(bind=db_engine)
-    session = Session()
+    """
+    test create and retrieve a Geschaeftspartner
+    """
+    session = sessionmaker(bind=db_engine)
+    session = session()
     # Create an address record
     # Create a Geschaeftspartner record
     new_geschaeftspartner = Geschaeftspartner(
@@ -81,8 +89,11 @@ def test_create_and_retrieve_geschaeftspartner(db_engine=engine):
 
 
 def test_update_address(db_engine=engine):
-    Session = sessionmaker(bind=db_engine)
-    session = Session()
+    """
+    Test to update table_adress
+    """
+    session = sessionmaker(bind=db_engine)
+    session = session()
     # Create an address record
     new_address = Adresse(postleitzahl="54321", ort="Stadt", strasse="Straße", hausnummer="1", landescode=Landescode.DE)
     session.add(new_address)

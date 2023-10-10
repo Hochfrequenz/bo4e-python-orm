@@ -1,3 +1,7 @@
+"""
+Auxiliary module to load url from env file
+"""
+
 import os
 
 from dotenv import load_dotenv
@@ -12,16 +16,16 @@ def get_url() -> str:
     password = os.getenv("POSTGRES_PASSWORD")
     server = os.getenv("POSTGRES_SERVER")
     port = os.getenv("POSTGRES_PORT")
-    db = os.getenv("POSTGRES_DB")
-    if user is None and password is None and server is None and db is None and port is None:
+    database = os.getenv("POSTGRES_DB")
+    if user is None and password is None and server is None and database is None and port is None:
         raise IOError("Could not load .env file.")
-    if user is None or password is None or server is None or db is None or port is None:
+    if user is None or password is None or server is None or database is None or port is None:
         raise KeyError(
             f"Couldn't find all environment variables:\n"
             f"\tuser: '{user}'\n"
             f"\tpassword: '{password}'\n"
             f"\tserver: '{server}'\n"
             f"\tport: '{port}'\n"
-            f"\tdb: '{db}'"
+            f"\tdb: '{database}'"
         )
-    return f"postgresql://{user}:{password}@{server}:{port}/{db}"
+    return f"postgresql://{user}:{password}@{server}:{port}/{database}"

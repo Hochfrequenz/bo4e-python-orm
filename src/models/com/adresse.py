@@ -1,4 +1,7 @@
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
+
+if TYPE_CHECKING:
+    from ..bo.geschaeftspartner import Geschaeftspartner
 
 from bo4e.enum.landescode import Landescode
 from sqlalchemy import Enum, String
@@ -27,7 +30,7 @@ class Adresse(Base):
     #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     co_ergaenzung: Mapped[Optional[str]] = mapped_column(String(30))
     #: Offizieller ISO-Landescode
-    landescode: Mapped[Landescode] = mapped_column(Enum(Landescode, name="Landescode", default=Landescode.DE))
+    landescode: Mapped[Landescode] = mapped_column(Enum(Landescode, name="Landescode", default="DE"))
     # todo: add xor for strasse oder postfach
 
     # Define relationships
