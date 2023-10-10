@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
+
 def get_url() -> str:
     """
     Build the database connection URL based on the environment variables in .env

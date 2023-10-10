@@ -1,20 +1,22 @@
 from typing import Optional
 
-
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
-from sqlalchemy import Boolean, ForeignKey, String, Enum, ARRAY
+from sqlalchemy import ARRAY, Boolean, Enum, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.base_class import Base
+
 
 class Geschaeftspartner(Base):
     __tablename__ = "geschaeftspartner"
     id: Mapped[int] = mapped_column(primary_key=True)  # need a primary key
     name1: Mapped[str] = mapped_column(String(30))
     gewerbekennzeichnung: Mapped[bool] = mapped_column(Boolean)
-    geschaeftspartnerrolle: Mapped[list[Geschaeftspartnerrolle]] = mapped_column(ARRAY(Enum(Geschaeftspartnerrolle, name="Geschaeftspartnerrolle")), nullable=False)
+    geschaeftspartnerrolle: Mapped[list[Geschaeftspartnerrolle]] = mapped_column(
+        ARRAY(Enum(Geschaeftspartnerrolle, name="Geschaeftspartnerrolle")), nullable=False
+    )
 
     anrede: Mapped[Optional[Anrede]] = mapped_column(Enum(Anrede, name="Anrede"), nullable=True)
 

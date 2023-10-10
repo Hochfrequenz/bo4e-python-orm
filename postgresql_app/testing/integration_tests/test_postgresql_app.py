@@ -2,22 +2,22 @@ import pytest
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.landescode import Landescode
-from sqlalchemy import create_engine
+
+# from db.base import Base
+from sqlalchemy import create_engine, inspect
+from sqlalchemy.engine.base import Engine
+from sqlalchemy.engine.reflection import Inspector
 from sqlalchemy.orm import sessionmaker
 
 from models.bo.geschaeftspartner import Geschaeftspartner
 from models.com.adresse import Adresse
 from postgresql_app.auxiliary import get_url
-#from db.base import Base
-from sqlalchemy import inspect
-from sqlalchemy.engine.base import Engine
-from sqlalchemy.engine.reflection import Inspector
+
+# create engine
+engine = create_engine(get_url())
 
 
-
-#create engine
-engine = create_engine( get_url() )
-def test_existence_of_tables(db_engine = engine):
+def test_existence_of_tables(db_engine=engine):
     insp: Inspector = inspect(db_engine)
 
     name_of_tables = insp.get_table_names()
@@ -26,17 +26,12 @@ def test_existence_of_tables(db_engine = engine):
     assert "adresse" in name_of_tables
 
 
-
-def test_create_and_retrieve_address( db_engine = engine):
-    Session = sessionmaker( bind=db_engine )
+def test_create_and_retrieve_address(db_engine=engine):
+    Session = sessionmaker(bind=db_engine)
     session = Session()
     # Create an address record
     new_address = Adresse(
-        postleitzahl="12345",
-        ort="Teststadt",
-        strasse="Teststraße",
-        hausnummer="42",
-        landescode = Landescode.DE
+        postleitzahl="12345", ort="Teststadt", strasse="Teststraße", hausnummer="42", landescode=Landescode.DE
     )
     session.add(new_address)
     session.commit()
@@ -56,9 +51,8 @@ def test_create_and_retrieve_address( db_engine = engine):
     session.close()
 
 
-
-def test_create_and_retrieve_geschaeftspartner( db_engine = engine):
-    Session = sessionmaker( bind=db_engine )
+def test_create_and_retrieve_geschaeftspartner(db_engine=engine):
+    Session = sessionmaker(bind=db_engine)
     session = Session()
     # Create an address record
     # Create a Geschaeftspartner record
@@ -85,11 +79,12 @@ def test_create_and_retrieve_geschaeftspartner( db_engine = engine):
     session.commit()
     session.close()
 
-def test_update_address( db_engine = engine ):
-    Session = sessionmaker( bind=db_engine )
+
+def test_update_address(db_engine=engine):
+    Session = sessionmaker(bind=db_engine)
     session = Session()
     # Create an address record
-    new_address = Adresse(postleitzahl="54321", ort="Stadt", strasse="Straße", hausnummer="1", landescode = Landescode.DE)
+    new_address = Adresse(postleitzahl="54321", ort="Stadt", strasse="Straße", hausnummer="1", landescode=Landescode.DE)
     session.add(new_address)
     session.commit()
 
@@ -105,6 +100,6 @@ def test_update_address( db_engine = engine ):
     assert updated_address.postleitzahl == "67890"
     assert updated_address.ort == "Neue Stadt"
 
-    #session.delete(new_address)
+    # session.delete(new_address)
     session.commit()
     session.close()

@@ -24,7 +24,7 @@ This is a template repository. It doesn't contain any useful code but only a min
   - [isort](https://pycqa.github.io/isort/) import order check
   - [codespell](https://github.com/codespell-project/codespell) spell check (including an ignore list)
   - ready-to-use publishing workflow for pypi (see readme section below)
-  
+
 
 By default, it uses Python version 3.11.
 
