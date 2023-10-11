@@ -18,7 +18,7 @@ def initialize_db():
     os.chdir("./postgresql_app")
     create_env_file(Path("."))
     subprocess.run("docker-compose -f docker-compose.yaml up --wait", shell=True)
-    time.sleep(1)
+    time.sleep(10)
     subprocess.run(["alembic", "upgrade", "head"], shell=True)
     engine = create_engine(get_url())
     session = sessionmaker(bind=engine)
