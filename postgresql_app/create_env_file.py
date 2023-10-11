@@ -39,4 +39,4 @@ def create_env_file(directory_path):
 
 if __name__ == "__main__":
     root_directory_path = Path.cwd()
-    create_env_file(directory_path=root_directory_path / Path("postgresql_app"))
+    create_env_file(directory_path=root_directory_path)

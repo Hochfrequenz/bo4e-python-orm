@@ -9,7 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 if TYPE_CHECKING:
     from ..com.adresse import Adresse
 
-from db.base_class import Base
+from db.base_class import Base  # type: ignore
 
 
 class Geschaeftspartner(Base):
