@@ -20,14 +20,13 @@ jobs:
           pip install tox
       - name: Start containers required by integrationtests
         run: |
-          ls
           cd postgresql_app
+          python .\create_env_file.py
           docker-compose -f "docker-compose.yaml" up -d
       - name: Run Tests and Record Coverage
         run: |
           tox -e coverage
       - name: stop containers required by integrationtests
         run: |
-          ls
           cd postgresql_app
           docker-compose -f "docker-compose.yaml" down -v
