@@ -1,4 +1,4 @@
-name: "Unittests"
+name: "tests"
 
 on: [push]
 jobs:
