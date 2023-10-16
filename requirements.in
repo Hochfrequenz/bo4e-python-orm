@@ -5,6 +5,6 @@ psycopg2
 pydantic>=2.0.0
 pyhumps
 python-dotenv
-SQLAlchemy
+SQLAlchemy>=2.0.22
 pymysql
 alembic_postgresql_enum

@@ -40,7 +40,7 @@ pymysql==1.1.0
     # via -r requirements.in
 python-dotenv==0.21.1
     # via -r requirements.in
-sqlalchemy==2.0.4
+sqlalchemy==2.0.22
     # via
     #   -r requirements.in
     #   alembic
