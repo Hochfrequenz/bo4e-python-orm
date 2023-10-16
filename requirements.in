@@ -1,0 +1,10 @@
+alembic>=1.12.0
+bo4e
+iso3166
+psycopg2
+pydantic>=2.0.0
+pyhumps
+python-dotenv
+SQLAlchemy>=2.0.22
+pymysql
+alembic_postgresql_enum
