@@ -1,12 +1,12 @@
 # Python BO4E ORM
 
 
-![Unittests status badge](https://github.com/Hochfrequenz/b04e-python-orm/workflows/tests/badge.svg)
-![Coverage status badge](https://github.com/Hochfrequenz/b04e-python-orm/workflows/Coverage/badge.svg)
-![Linting status badge](https://github.com/Hochfrequenz/b04e-python-orm/workflows/Linting/badge.svg)
-![Black status badge](https://github.com/Hochfrequenz/b04e-python-orm/workflows/Formatting/badge.svg)
+![Unittests status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/tests/badge.svg)
+![Coverage status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Coverage/badge.svg)
+![Linting status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Linting/badge.svg)
+![Black status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Formatting/badge.svg)
 
-A ORM tool to map between SQL databases and bo4e classes using:
+A ORM tool to map between SQL databases and BO4E classes using:
 ...
 
 ### Installation
