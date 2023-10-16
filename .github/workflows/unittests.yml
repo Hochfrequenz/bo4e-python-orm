@@ -21,7 +21,7 @@ jobs:
       - name: Start containers required by integrationtests
         run: |
           cd postgresql_app
-          python .\create_env_file.py
+          python create_env_file.py
           docker-compose -f "docker-compose.yaml" up -d
       - name: Run the Unit Tests via Tox
         run: |
