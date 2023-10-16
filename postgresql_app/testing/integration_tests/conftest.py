@@ -17,8 +17,8 @@ def initialize_db():
     current_dir = os.getcwd()
     os.chdir("./postgresql_app")
     create_env_file(Path("."))
-    subprocess.run("docker-compose -f docker-compose.yaml up --wait", shell=True)
-    time.sleep(10)
+    #    subprocess.run("docker-compose -f docker-compose.yaml up --wait", shell=True)
+    time.sleep(2)
     subprocess.run(["alembic", "upgrade", "head"], shell=True)
     engine = create_engine(get_url())
     session = sessionmaker(bind=engine)
@@ -26,5 +26,5 @@ def initialize_db():
     # Teardown: close session, stop and remove container
     yield session
     session.close()
-    subprocess.run("docker-compose -f docker-compose.yaml down -v", shell=True)
+    #    subprocess.run("docker-compose -f docker-compose.yaml down -v", shell=True)
     os.chdir(current_dir)
