@@ -21,7 +21,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox
       - name: Start containers required by integrationtests
-        run: docker-compose -f "b04e-python-orm/postgresql_app/docker-compose.yaml" up -d
+        run: docker-compose -f "/b04e-python-orm/postgresql_app/docker-compose.yaml" up -d
       - name: Run ${{ matrix.linter-env }} via Tox
         run: |
           tox -e ${{ matrix.linter-env }}
