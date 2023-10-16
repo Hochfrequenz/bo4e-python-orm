@@ -23,10 +23,8 @@ jobs:
           cd postgresql_app
           python create_env_file.py
           docker-compose -f "docker-compose.yaml" up -d
-      - name: alembic set up DB
-        run: |
-          cd postgresql_app
-          alembic upgrade head
+      - name: Setup database with Alembic via tox
+        run: tox -e migration
       - name: Run Tests and Record Coverage
         run: |
           tox -e coverage
