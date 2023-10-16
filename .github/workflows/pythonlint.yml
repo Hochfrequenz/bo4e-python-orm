@@ -28,3 +28,8 @@ jobs:
       - name: Run ${{ matrix.linter-env }} via Tox
         run: |
           tox -e ${{ matrix.linter-env }}
+      - name: stop containers required by integrationtests
+        run: |
+          ls
+          cd postgresql_app
+          docker-compose -f "docker-compose.yaml" down -v
