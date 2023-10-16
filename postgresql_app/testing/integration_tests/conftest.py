@@ -19,7 +19,7 @@ def initialize_db():
     create_env_file(Path("."))
     #    subprocess.run("docker-compose -f docker-compose.yaml up --wait", shell=True)
     time.sleep(2)
-    subprocess.run(["alembic", "upgrade", "head"], shell=True)
+    #    subprocess.run(["alembic", "upgrade", "head"], shell=True)
     engine = create_engine(get_url())
     session = sessionmaker(bind=engine)
     session = session()
