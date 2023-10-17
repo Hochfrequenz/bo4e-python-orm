@@ -26,6 +26,9 @@ jobs:
 #          docker-compose -f "docker-compose.yaml" up -d
 #      - name: Setup database with Alembic via tox
 #        run: tox -e migration
+      - name: Start migration
+        run: |
+          tox -e migration
       - name: Run Tests and Record Coverage
         run: |
           tox -e coverage
