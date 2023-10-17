@@ -1,9 +1,9 @@
 from logging.config import fileConfig
 
 from alembic import context
+from db.base import Base
 from sqlalchemy import engine_from_config, pool
 
-from db.base import Base
 from mySQL_app.auxiliary import get_url
 
 # this is the Alembic Config object, which provides

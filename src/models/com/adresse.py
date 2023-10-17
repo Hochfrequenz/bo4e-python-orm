@@ -4,10 +4,9 @@ if TYPE_CHECKING:
     from ..bo.geschaeftspartner import Geschaeftspartner
 
 from bo4e.enum.landescode import Landescode
+from db.base_class import Base
 from sqlalchemy import Enum, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from db.base_class import Base
 
 
 class Adresse(Base):
