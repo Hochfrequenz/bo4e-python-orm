@@ -4,7 +4,6 @@ Auxiliary module to load url from env file
 
 import os
 
-import psycopg
 from dotenv import load_dotenv
 
 
@@ -29,4 +28,4 @@ def get_url() -> str:
             f"\tport: '{port}'\n"
             f"\tdb: '{database}'"
         )
-    return f"postgresql+psycopg://{user}:{password}@{server}:{port}/{database}"
+    return f"postgresql+pg8000://{user}:{password}@{server}:{port}/{database}"

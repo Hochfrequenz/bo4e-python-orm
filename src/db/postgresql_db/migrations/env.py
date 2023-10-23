@@ -1,7 +1,6 @@
 # import alembic_postgresql_enum
 from logging.config import fileConfig
 
-import psycopg as pg
 from alembic import context
 from base import Base
 from postgresql_db.auxiliary import get_url
