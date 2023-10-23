@@ -1,11 +1,11 @@
 # import alembic_postgresql_enum
 from logging.config import fileConfig
 
+import psycopg as pg
 from alembic import context
-from postgresql_app.auxiliary import get_url
+from base import Base
+from postgresql_db.auxiliary import get_url
 from sqlalchemy import engine_from_config, pool
-
-from db.base import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

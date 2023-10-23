@@ -4,6 +4,7 @@ Auxiliary module to load url from env file
 
 import os
 
+import psycopg
 from dotenv import load_dotenv
 
 
