@@ -28,4 +28,4 @@ def get_url() -> str:
             f"\tport: '{port}'\n"
             f"\tdb: '{database}'"
         )
-    return f"postgresql+pg8000://{user}:{password}@{server}:{port}/{database}"
+    return f"postgresql://{user}:{password}@{server}:{port}/{database}"
