@@ -3,7 +3,6 @@ Integration tests for Adresse
 """
 
 import pytest
-from bo4e.enum.landescode import Landescode
 from sqlalchemy import inspect
 from sqlalchemy.engine.reflection import Inspector
 

@@ -1,13 +1,8 @@
-import os
-import subprocess
-import time
-from pathlib import Path
-
-import pytest  # type: ignore # todo
+import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from borm.db.postgresql_db.auxiliary import get_url
+from borm.db.postgresql_db.auxiliary import get_url  # type: ignore[import-untyped]
 
 
 @pytest.fixture(scope="module")
