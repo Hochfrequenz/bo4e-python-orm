@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      PGDATA: /var/lib/mysql
+      # the :- tells docker-compose to use the given default value (here: 3306)
+      # if the environment variable is empty or not defined
+      # More information are listed in the docker-compose documentation:
+      # https://docs.docker.com/compose/environment-variables/#substitute-environment-variables-in-compose-files
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - ${MYSQL_PORT:-3306}:3306
+
+volumes:
+  db-data:
