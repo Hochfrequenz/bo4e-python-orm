@@ -6,3 +6,4 @@ It imports all database models to be able to create all related tables
 # Import all the models, so that Base has them before being
 # imported by Alembic
 from borm.db.base_class import Base, mapper_registry
+from borm.models.com.adresse import Adresse
