@@ -2,9 +2,10 @@
 from logging.config import fileConfig
 
 from alembic import context
-from base import Base
-from postgresql_db.auxiliary import get_url
 from sqlalchemy import engine_from_config, pool
+
+from borm.db.base import Base
+from borm.db.postgresql_db.auxiliary import get_url
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
