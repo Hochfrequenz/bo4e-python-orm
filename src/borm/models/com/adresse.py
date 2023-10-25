@@ -1,5 +1,7 @@
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
+if TYPE_CHECKING:
+    from borm.models.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.landescode import Landescode
 from sqlalchemy import Enum, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -28,7 +30,9 @@ class Adresse(Base):
     co_ergaenzung: Mapped[Optional[str]] = mapped_column(String(30))
     #: Offizieller ISO-Landescode
     landescode: Mapped[Landescode] = mapped_column(Enum(Landescode, name="Landescode", default="DE"))
-    # todo: add xor for strasse oder postfach
+
+    # Define relationships
+    geschaeftspartner: Mapped["Geschaeftspartner"] = relationship(back_populates="partneradresse")
 
     def __repr__(self) -> str:
         return f"Adresse(id={self.id!r}, Postleitzahl={self.postleitzahl!r}, Ort={self.ort!r})"
