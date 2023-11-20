@@ -1,4 +1,4 @@
-name: "Unittests"
+name: "Integrationtests"
 
 on: [push]
 jobs:
@@ -20,4 +20,4 @@ jobs:
           pip install tox
       - name: Run the Unit Tests via Tox
         run: |
-          tox -e unittests
+          tox -e integrationtests

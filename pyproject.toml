@@ -1,10 +1,10 @@
 [project]
-name = "your-favourite-package-name"
-description = "Description of your package"
+name = "borm"
+description = "A ORM tool to map between SQL databases and bo4e data model"
 license = { text = "MIT" }
 requires-python = ">=3.11"
-authors = [{ name = "your name", email = "your@email.address" }]
-keywords = ["your", "important", "keywords"]
+authors = [{ name = "Hochfrequenz Unternehmensberatung GmbH", email = "info@hochfrequenz.de" }]
+keywords = ["bo4e", "orm", "sql"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -14,13 +14,14 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
 ]
 dependencies = []     # add all the dependencies from requirements.in here, too
 dynamic = ["readme", "version"]
 
 [project.urls]
-Changelog = "https://github.com/Hochfrequenz/python_template_repository/releases"
-Homepage = "https://github.com/Hochfrequenz/python_template_repository"
+Changelog = "https://github.com/Hochfrequenz/bo4e-python-orm/releases"
+Homepage = "https://github.com/Hochfrequenz/bo4e-python-orm"
 
 [tool.black]
 line-length = 120
