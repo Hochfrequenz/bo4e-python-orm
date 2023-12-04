@@ -134,3 +134,7 @@ dmypy.json
 .vscode/
 
 src/_your_package_version.py
+
+src/borm/models/**
+
+bo4e_schemas/output/**

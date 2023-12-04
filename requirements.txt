@@ -42,16 +42,15 @@ pymysql==1.1.0
     # via -r requirements.in
 python-dotenv==0.21.1
     # via -r requirements.in
-sqlalchemy==2.0.22
-    # via
-    #   -r requirements.in
-    #   alembic
+sqlalchemy==2.0.23
+    # via sqlmodel
+sqlmodel==0.0.12
+    # via -r requirements.in
 typing-extensions==4.8.0
     # via
     #   alembic
     #   psycopg
     #   pydantic
-    #   pydantic-core
     #   sqlalchemy
 tzdata==2023.3
     # via psycopg

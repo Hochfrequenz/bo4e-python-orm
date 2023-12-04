@@ -2,7 +2,29 @@
 This module is mainly used by Alembic
 It imports all database models to be able to create all related tables
 """
+import importlib
+import os
 
 # Import all the models, so that Base has them before being
 # imported by Alembic
-from borm.db.base_class import MappingBase, mapper_registry
+# from borm.db.base_class import Base, mapper_registry
+
+
+def import_all_modules(package):
+    modules = []
+    package_path = os.path.dirname(package.__file__)
+
+    for filename in os.listdir(package_path):
+        if filename.endswith(".py") and not filename.startswith("__"):
+            module_name = f"{package.__name__}.{filename[:-3]}"
+            module = importlib.import_module(module_name)
+            modules.append(module)
+
+    return modules
+
+
+# Import all modules from models.bo
+bo_modules = import_all_modules(__import__("borm.models.bo", fromlist=[""]))
+
+# Import all modules from models.com
+com_modules = import_all_modules(__import__("borm.models.com", fromlist=[""]))
