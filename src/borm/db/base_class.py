@@ -8,7 +8,7 @@ mapper_registry = registry()
 metadata: MetaData = MetaData()
 
 
-class Base(DeclarativeBase):
+class MappingBase(DeclarativeBase):
     # pylint: disable=too-few-public-methods
     """
     Base class which inherits from DeclarativeBase
