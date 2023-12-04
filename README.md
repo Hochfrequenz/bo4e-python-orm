@@ -17,7 +17,22 @@ pip install borm
 ```
 
 ### Documentation
-Will be implemented soon
+
+To setup a test db (postgresql) run the following in your tox env (see below):
+```bash
+tox -e setup_testpostgresql
+```
+Make sure that your local host is running.
+
+Second, the alembic migration is done running:
+```bash
+tox -e migration
+```
+Enter the following to delete the test db:
+```bash
+tox -e remove_testpostgresql
+```
+
 
 ## How to use this Repository on Your Machine
 
