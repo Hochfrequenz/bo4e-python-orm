@@ -6,8 +6,6 @@
 #
 alembic==1.12.0
     # via -r requirements.in
-annotated-types==0.5.0
-    # via pydantic
 cffi==1.16.0
     # via cryptography
 colorama==0.4.6
@@ -30,12 +28,12 @@ psycopg[binary]==3.1.12
     #   psycopg
 psycopg-binary==3.1.12
     # via psycopg
+psycopg2==2.9.9
+    # via -r requirements.in
 pycparser==2.21
     # via cffi
-pydantic==2.2.1
-    # via -r requirements.in
-pydantic-core==2.6.1
-    # via pydantic
+pydantic==1.10.13
+    # via sqlmodel
 pyhumps==3.8.0
     # via -r requirements.in
 pymysql==1.1.0
@@ -43,7 +41,10 @@ pymysql==1.1.0
 python-dotenv==0.21.1
     # via -r requirements.in
 sqlalchemy==2.0.23
-    # via sqlmodel
+    # via
+    #   -r requirements.in
+    #   alembic
+    #   sqlmodel
 sqlmodel==0.0.12
     # via -r requirements.in
 typing-extensions==4.8.0
