@@ -5,6 +5,9 @@ It imports all database models to be able to create all related tables
 import importlib
 import os
 
+import borm.models
+import borm.models.many
+
 # Import all the models, so that Base has them before being
 # imported by Alembic
 # from borm.db.base_class import Base, mapper_registry
@@ -24,7 +27,7 @@ def import_all_modules(package):
 
 
 # Import all modules from models.bo
-bo_modules = import_all_modules(__import__("borm.models.bo", fromlist=[""]))
+# bo_modules = import_all_modules(__import__("borm.models.bo", fromlist=[""]))
 
 # Import all modules from models.com
-com_modules = import_all_modules(__import__("borm.models.com", fromlist=[""]))
+# com_modules = import_all_modules(__import__("borm.models.com", fromlist=[""]))
