@@ -28,6 +28,18 @@ Second, the alembic migration is done running:
 ```bash
 tox -e migration
 ```
+Alternatively, an existing bo4e version can be pulled via:
+```bash
+tox -e init_bo4e
+```
+This uses two other tools:
+https://github.com/bo4e/BO4E-Schema-Tool
+and
+https://github.com/bo4e/BO4E-Python-Generator
+(For now, specific branches are used).
+
+Make sure you specify the version in tox.ini via the -t flag.
+
 Enter the following to delete the test db:
 ```bash
 tox -e remove_testpostgresql
