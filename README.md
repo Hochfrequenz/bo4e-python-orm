@@ -40,6 +40,12 @@ https://github.com/bo4e/BO4E-Python-Generator
 
 Make sure you specify the version in tox.ini via the -t flag.
 
+The fast way is to use:
+```bash
+tox -e setup_bo4e
+```
+which combines the steps above.
+
 Enter the following to delete the test db:
 ```bash
 tox -e remove_testpostgresql
