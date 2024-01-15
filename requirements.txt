@@ -10,8 +10,6 @@ annotated-types==0.5.0
     # via pydantic
 cffi==1.16.0
     # via cryptography
-colorama==0.4.6
-    # via colorlog
 colorlog==6.8.0
     # via -r requirements.in
 cryptography==41.0.4
@@ -40,7 +38,7 @@ pyhumps==3.8.0
     # via -r requirements.in
 pymysql==1.1.0
     # via -r requirements.in
-python-dotenv==0.21.1
+python-dotenv==1.0.0
     # via -r requirements.in
 sqlalchemy==2.0.22
     # via
@@ -53,5 +51,3 @@ typing-extensions==4.8.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-tzdata==2023.3
-    # via psycopg
