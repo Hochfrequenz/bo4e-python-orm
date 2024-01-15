@@ -24,10 +24,3 @@ def import_all_modules(package):
             modules.append(module)
 
     return modules
-
-
-# Import all modules from models.bo
-# bo_modules = import_all_modules(__import__("borm.models.bo", fromlist=[""]))
-
-# Import all modules from models.com
-# com_modules = import_all_modules(__import__("borm.models.com", fromlist=[""]))
