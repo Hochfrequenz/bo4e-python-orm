@@ -30,9 +30,9 @@ psycopg-binary==3.1.12
     # via psycopg
 pycparser==2.21
     # via cffi
-pydantic==2.2.1
+pydantic==2.5.3
     # via -r requirements.in
-pydantic-core==2.6.1
+pydantic-core==2.14.6
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
