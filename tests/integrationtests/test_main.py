@@ -3,7 +3,7 @@ from sqlalchemy import Inspector, inspect
 from sqlmodel import select
 
 from borm.db.postgresql_db.create_db import engine  # type: ignore
-from borm.models import Angebot  # type: ignore
+from borm.models import Angebot, Geschaeftspartner  # type: ignore
 
 # from borm.logger import logger
 
@@ -47,6 +47,33 @@ class TestAngebot:
         retrieved_angebot = session.exec(statement)
         for angebot in retrieved_angebot:
             assert angebot.anfragereferenz == "anfrage2"
+        session.delete(testangebot1)
+        session.delete(testangebot2)
+        session.commit()
+
+    def test_read_write_linked_entries(self, initialize_session) -> None:
+        session = initialize_session
+        testgeschaeftspartner1 = Geschaeftspartner(glaeubiger_id="123", amtsgericht="Leipzig")
+        testgeschaeftspartner2 = Geschaeftspartner(glaeubiger_id="321", amtsgericht="Berlin")
+        testangebot1 = Angebot(angebotsnummer="125", anfragereferenz="anfrage1", angebotsgeber=testgeschaeftspartner1)
+        testangebot2 = Angebot(angebotsnummer="215", anfragereferenz="anfrage2", angebotsgeber=testgeschaeftspartner2)
+        session.add(testgeschaeftspartner1)
+        session.add(testgeschaeftspartner2)
+        session.add(testangebot1)
+        session.add(testangebot2)
+        session.commit()
+        statement = select(Angebot, Geschaeftspartner).where(
+            Angebot.angebotsgeber_id == Geschaeftspartner.geschaeftspartner_sqlid
+        )
+        results = session.exec(statement).unique()
+        for angebot, partner in results:
+            print(angebot.angebotsnummer, partner.glaeubiger_id)
+            assert (angebot.angebotsnummer == "125" and partner.glaeubiger_id == "123") or (
+                angebot.angebotsnummer == "215" and partner.glaeubiger_id == "321"
+            )
+
+        session.delete(testgeschaeftspartner1)
+        session.delete(testgeschaeftspartner2)
         session.delete(testangebot1)
         session.delete(testangebot2)
         session.commit()
