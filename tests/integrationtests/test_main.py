@@ -2,9 +2,8 @@ import pytest
 from sqlalchemy import Inspector, inspect
 from sqlmodel import select
 
-from borm.models import Angebot, Geschaeftspartner  # type: ignore
-
-# from borm.logger import logger
+from borm.models.bo.angebot import Angebot  # type: ignore
+from borm.models.bo.geschaeftspartner import Geschaeftspartner  # type: ignore
 
 
 class TestAngebot:
@@ -16,7 +15,6 @@ class TestAngebot:
 
         insp: Inspector = inspect(initialize_session.bind)
         name_of_tables = insp.get_table_names()
-        # logger.info(f"name of all tables{name_of_tables}")
         assert "angebot" in name_of_tables
 
     def test_add_and_read_row(self, initialize_session) -> None:
