@@ -6,6 +6,8 @@
 #
 astroid==3.0.1
     # via pylint
+colorama==0.4.6
+    # via pylint
 dill==0.3.7
     # via pylint
 isort==5.13.2
