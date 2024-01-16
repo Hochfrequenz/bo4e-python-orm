@@ -1,7 +1,6 @@
-import pytest  # type: ignore
+import pytest
 from sqlmodel import Session
 
-from borm.db.postgresql_db.auxiliary import get_url  # type: ignore[import-untyped]
 from borm.db.postgresql_db.create_db import engine  # type: ignore
 
 
