@@ -1,14 +1,16 @@
-from sqlalchemy import create_engine
-from sqlmodel import SQLModel
+"""
+__main__ module.
+This module serves as the entry point for the application when executed as a script.
+"""
+from borm.db.postgresql_db.create_db import create_db
 
-import borm.db.base
-from borm.db.postgresql_db.auxiliary import get_url
-from borm.db.postgresql_db.create_db import create_db, engine
 
-
-# main
 def main() -> None:
-    create_db(engine)
+    """
+    collects all fcts to be executed when running borm.
+    creates database and tables for existing SQLModel classes
+    """
+    create_db()
 
 
 if __name__ == "__main__":

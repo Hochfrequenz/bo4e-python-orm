@@ -5,15 +5,19 @@ It imports all database models to be able to create all related tables
 import importlib
 import os
 
-import borm.models
-import borm.models.many
+import borm.models  # noqa # pylint: disable=unused-import
+import borm.models.many  # noqa # pylint: disable=unused-import
 
 # Import all the models, so that Base has them before being
 # imported by Alembic
-# from borm.db.base_class import Base, mapper_registry
+from borm.db.base_class import MappingBase, mapper_registry  # noqa # pylint: disable=unused-import
 
 
 def import_all_modules(package):
+    """
+    Import all modules from package
+    Currently not used
+    """
     modules = []
     package_path = os.path.dirname(package.__file__)
 

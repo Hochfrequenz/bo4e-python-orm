@@ -1,3 +1,6 @@
+"""
+This sets up the environment for alembic migrations.
+"""
 # import alembic_postgresql_enum
 from logging.config import fileConfig
 
@@ -9,6 +12,7 @@ from borm.db.postgresql_db.auxiliary import get_url
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
+# pylint: disable=no-member
 config = context.config
 
 # Interpret the config file for Python logging.

@@ -1,3 +1,6 @@
+"""
+This sets up the environment for alembic migrations.
+"""
 from logging.config import fileConfig
 
 from alembic import context
@@ -8,6 +11,7 @@ from borm.db.mysql_db.auxiliary import get_url
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
+# pylint: disable=no-member
 config = context.config
 
 # Interpret the config file for Python logging.
