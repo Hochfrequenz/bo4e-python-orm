@@ -12,12 +12,14 @@ class TestAngebot:
         """
         test for the existence of tables
         """
-
         insp: Inspector = inspect(initialize_session.bind)
         name_of_tables = insp.get_table_names()
         assert "angebot" in name_of_tables
 
     def test_add_and_read_row(self, initialize_session) -> None:
+        """
+        test to add a row to an existing table and read it
+        """
         session = initialize_session
         testangebot = Angebot(angebotsnummer="125")
         session.add(testangebot)
@@ -32,6 +34,9 @@ class TestAngebot:
         session.commit()
 
     def test_read_cond_row(self, initialize_session) -> None:
+        """
+        test to add a row to an existing table and read it with conditions
+        """
         session = initialize_session
         testangebot1 = Angebot(angebotsnummer="125", anfragereferenz="anfrage1")
         testangebot2 = Angebot(angebotsnummer="215", anfragereferenz="anfrage2")
@@ -49,6 +54,9 @@ class TestAngebot:
         session.commit()
 
     def test_read_write_linked_entries(self, initialize_session) -> None:
+        """
+        test to write and read connected rows of two different tables
+        """
         session = initialize_session
         testgeschaeftspartner1 = Geschaeftspartner(glaeubiger_id="123", amtsgericht="Leipzig")
         testgeschaeftspartner2 = Geschaeftspartner(glaeubiger_id="321", amtsgericht="Berlin")
@@ -75,6 +83,9 @@ class TestAngebot:
         session.commit()
 
     def test_read_write_1_2_relationship(self, initialize_session) -> None:
+        """
+        test to write and read rows of a 1-2 relationship
+        """
         session = initialize_session
         testgeschaeftspartner1 = Geschaeftspartner(glaeubiger_id="123", amtsgericht="Leipzig")
         testgeschaeftspartner2 = Geschaeftspartner(glaeubiger_id="321", amtsgericht="Berlin")
