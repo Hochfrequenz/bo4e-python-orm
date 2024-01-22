@@ -30,8 +30,6 @@ psycopg[binary]==3.1.12
     #   psycopg
 psycopg-binary==3.1.12
     # via psycopg
-psycopg2==2.9.9
-    # via -r requirements.in
 pycparser==2.21
     # via cffi
 pydantic==2.5.3
