@@ -41,3 +41,4 @@ Follow the instructions in our [Python template repository](https://github.com/H
 ## Contribute
 
 You are very welcome to contribute to this repository by opening a pull request against the main branch.
+If you use a windows OS you might need to change psycopg -> psycopg[binary] in the requirements.
