@@ -1,6 +1,5 @@
 import pytest
 from sqlalchemy import Inspector, inspect
-from sqlalchemy.orm import Session
 from sqlmodel import select
 
 from borm.models.bo.angebot import Angebot
