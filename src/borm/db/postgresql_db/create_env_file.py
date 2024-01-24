@@ -9,7 +9,7 @@ from shutil import copyfile
 from borm.logger import logger
 
 
-def create_env_file(directory_path):
+def create_env_file(directory_path: Path) -> None:
     """
     Checks if a file with the file name `destination_file_name` exists.
     If yes, nothing will be done.

@@ -14,9 +14,9 @@ colorama==0.4.6
     # via colorlog
 colorlog==6.8.0
     # via -r requirements.in
-cryptography==41.0.4
+cryptography==41.0.7
     # via -r requirements.in
-greenlet==3.0.0
+greenlet==3.0.3
     # via
     #   -r requirements.in
     #   sqlalchemy
@@ -24,12 +24,8 @@ mako==1.2.4
     # via alembic
 markupsafe==2.1.3
     # via mako
-psycopg[binary]==3.1.12
-    # via
-    #   -r requirements.in
-    #   psycopg
-psycopg-binary==3.1.12
-    # via psycopg
+psycopg==3.1.17
+    # via -r requirements.in
 pycparser==2.21
     # via cffi
 pydantic==2.5.3
@@ -42,7 +38,7 @@ pymysql==1.1.0
     # via -r requirements.in
 python-dotenv==1.0.0
     # via -r requirements.in
-sqlalchemy==2.0.23
+sqlalchemy==2.0.25
     # via
     #   -r requirements.in
     #   alembic

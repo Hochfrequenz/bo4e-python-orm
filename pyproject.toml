@@ -47,7 +47,7 @@ fragments = [{ path = "README.md" }]
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/_your_package_version.py"
+version-file = "src/_borm_version.py"
 template = '''
 version = "{version}"
 '''
@@ -58,3 +58,24 @@ exclude = ["/unittests"]
 [tool.hatch.build.targets.wheel]
 only-include = ["src"]
 sources = ["src"]
+
+[tool.mypy]
+plugins = ["sqlalchemy.ext.mypy.plugin", "pydantic.mypy"]
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+# for strict mypy: (this is the tricky one :-))
+disallow_untyped_defs = true #todo:fix -> tests session typing
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[[tool.mypy.overrides]]
+module = "test"
+warn_unused_ignores = false

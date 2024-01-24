@@ -1,14 +1,15 @@
 import pytest
 from sqlalchemy import Inspector, inspect
+from sqlalchemy.orm import Session
 from sqlmodel import select
 
-from borm.models.bo.angebot import Angebot  # type: ignore
-from borm.models.bo.geschaeftspartner import Geschaeftspartner  # type: ignore
+from borm.models.bo.angebot import Angebot
+from borm.models.bo.geschaeftspartner import Geschaeftspartner
 
 
 class TestAngebot:
     @pytest.mark.usefixtures("initialize_session")
-    def test_existence_of_tables(self, initialize_session) -> None:
+    def test_existence_of_tables(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
         test for the existence of tables
         """
@@ -16,7 +17,7 @@ class TestAngebot:
         name_of_tables = insp.get_table_names()
         assert "angebot" in name_of_tables
 
-    def test_add_and_read_row(self, initialize_session) -> None:
+    def test_add_and_read_row(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
         test to add a row to an existing table and read it
         """
@@ -33,7 +34,7 @@ class TestAngebot:
         session.delete(testangebot)
         session.commit()
 
-    def test_read_cond_row(self, initialize_session) -> None:
+    def test_read_cond_row(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
         test to add a row to an existing table and read it with conditions
         """
@@ -53,7 +54,7 @@ class TestAngebot:
         session.delete(testangebot2)
         session.commit()
 
-    def test_read_write_linked_entries(self, initialize_session) -> None:
+    def test_read_write_linked_entries(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
         test to write and read connected rows of two different tables
         """
@@ -82,7 +83,7 @@ class TestAngebot:
         session.delete(testangebot2)
         session.commit()
 
-    def test_read_write_1_2_relationship(self, initialize_session) -> None:
+    def test_read_write_1_2_relationship(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
         test to write and read rows of a 1-2 relationship
         """
