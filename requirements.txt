@@ -26,9 +26,9 @@ psycopg==3.1.17
     # via -r requirements.in
 pycparser==2.21
     # via cffi
-pydantic==2.5.3
+pydantic==2.6.0
     # via -r requirements.in
-pydantic-core==2.14.6
+pydantic-core==2.16.1
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
