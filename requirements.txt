@@ -12,7 +12,7 @@ cffi==1.16.0
     # via cryptography
 colorlog==6.8.2
     # via -r requirements.in
-cryptography==41.0.7
+cryptography==42.0.1
     # via -r requirements.in
 greenlet==3.0.3
     # via
@@ -26,15 +26,15 @@ psycopg==3.1.17
     # via -r requirements.in
 pycparser==2.21
     # via cffi
-pydantic==2.5.3
+pydantic==2.6.0
     # via -r requirements.in
-pydantic-core==2.14.6
+pydantic-core==2.16.1
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
 pymysql==1.1.0
     # via -r requirements.in
-python-dotenv==1.0.0
+python-dotenv==1.0.1
     # via -r requirements.in
 sqlalchemy==2.0.25
     # via
