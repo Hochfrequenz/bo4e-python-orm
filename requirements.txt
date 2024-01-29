@@ -34,7 +34,7 @@ pyhumps==3.8.0
     # via -r requirements.in
 pymysql==1.1.0
     # via -r requirements.in
-python-dotenv==1.0.0
+python-dotenv==1.0.1
     # via -r requirements.in
 sqlalchemy==2.0.25
     # via
