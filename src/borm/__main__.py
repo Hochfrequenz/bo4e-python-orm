@@ -2,6 +2,7 @@
 __main__ module.
 This module serves as the entry point for the application when executed as a script.
 """
+
 from borm.db.postgresql_db.create_db import create_db
 
 

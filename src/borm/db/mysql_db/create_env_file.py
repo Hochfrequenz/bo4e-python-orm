@@ -3,6 +3,7 @@ This python script copies the env.example to .env if .env does not already exist
 This is similar to the bash command `mv example.env .env`.
 It is used in all tox environments except the linting environment.
 """
+
 from pathlib import Path
 from shutil import copyfile
 

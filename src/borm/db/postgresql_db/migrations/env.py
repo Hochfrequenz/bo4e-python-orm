@@ -1,6 +1,7 @@
 """
 This sets up the environment for alembic migrations.
 """
+
 # import alembic_postgresql_enum
 from logging.config import fileConfig
 

@@ -1,6 +1,7 @@
 """
 This module provides functionality related to the PostgreSQL database in the context of the borm application.
 """
+
 from sqlmodel import SQLModel, create_engine
 
 import borm.db.base  # noqa # pylint: disable=unused-import

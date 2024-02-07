@@ -2,6 +2,7 @@
 This module is mainly used by Alembic
 It imports all database models to be able to create all related tables
 """
+
 import importlib
 import os
 
