@@ -7,7 +7,7 @@ from borm.db.postgresql_db.create_db import create_db
 
 def main() -> None:
     """
-    collects all fcts to be executed when running borm.
+    collects everything to be executed when running borm.
     creates database and tables for existing SQLModel classes
     """
     create_db()

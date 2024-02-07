@@ -1,7 +1,10 @@
+from decimal import Decimal
+
 import pytest
 from sqlalchemy import Inspector, inspect
 from sqlmodel import select
 
+from borm.models import Angebotsvariante, Unterschrift, Vertrag, Zaehler
 from borm.models.bo.angebot import Angebot
 from borm.models.bo.geschaeftspartner import Geschaeftspartner
 
@@ -22,7 +25,9 @@ class TestAngebot:
         """
         session = initialize_session
         testangebot = Angebot(angebotsnummer="125")
+        testzaehler = Zaehler(zaehlerkonstante=Decimal("12.25"))
         session.add(testangebot)
+        session.add(testzaehler)
         session.commit()
 
         # read and check row
@@ -30,8 +35,10 @@ class TestAngebot:
         retrieved_angebot = session.exec(statement)
         for angebot in retrieved_angebot:
             assert angebot.angebotsnummer == "125"
-        session.delete(testangebot)
-        session.commit()
+        statement2 = select(Zaehler)
+        retrieved_zaehler = session.exec(statement2).unique()
+        for zaehler in retrieved_zaehler:
+            assert zaehler.zaehlerkonstante == Decimal("12.25")
 
     def test_read_cond_row(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
@@ -49,9 +56,6 @@ class TestAngebot:
         retrieved_angebot = session.exec(statement)
         for angebot in retrieved_angebot:
             assert angebot.anfragereferenz == "anfrage2"
-        session.delete(testangebot1)
-        session.delete(testangebot2)
-        session.commit()
 
     def test_read_write_linked_entries(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
@@ -75,12 +79,6 @@ class TestAngebot:
             assert (angebot.angebotsnummer == "125" and partner.glaeubiger_id == "123") or (
                 angebot.angebotsnummer == "215" and partner.glaeubiger_id == "321"
             )
-
-        session.delete(testgeschaeftspartner1)
-        session.delete(testgeschaeftspartner2)
-        session.delete(testangebot1)
-        session.delete(testangebot2)
-        session.commit()
 
     def test_read_write_1_2_relationship(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
         """
@@ -114,7 +112,41 @@ class TestAngebot:
         for angebot, partner in results:
             assert angebot.angebotsnummer == "125" and partner.glaeubiger_id == "321"
 
-        session.delete(testgeschaeftspartner1)
-        session.delete(testgeschaeftspartner2)
-        session.delete(testangebot1)
+    def test_read_write_many_many_relationship(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
+        """
+        test to write and read rows of a 1-2 relationship
+        """
+        session = initialize_session
+        testvariante = Angebotsvariante(version="test")
+        testangebot1 = Angebot(angebotsnummer="125", varianten=[testvariante])
+
+        unterschrift1 = Unterschrift(name="ersteUnterschrift")
+        unterschrift2 = Unterschrift(name="zweiteUnterschrift")
+        unterschrift3 = Unterschrift(name="dritteUnterschrift")
+        vertrag1 = Vertrag(unterzeichnervp1=[unterschrift1, unterschrift2], unterzeichnervp2=[unterschrift3])
+
+        session.add(unterschrift1)
+        session.add(unterschrift2)
+        session.add(unterschrift3)
+        session.add(vertrag1)
+        session.add(testvariante)
+        session.add(testangebot1)
         session.commit()
+        session.refresh(testvariante)
+        session.refresh(testangebot1)
+        session.refresh(vertrag1)
+        session.refresh(unterschrift1)
+        session.refresh(unterschrift2)
+        session.refresh(unterschrift3)
+
+        statement = select(Vertrag)
+        results = session.exec(statement)
+        for vertrag in results:
+            assert vertrag.unterzeichnervp1[0].name == "ersteUnterschrift"
+            assert vertrag.unterzeichnervp1[1].name == "zweiteUnterschrift"
+            assert vertrag.unterzeichnervp2[0].name == "dritteUnterschrift"
+
+        statement2 = select(Angebot)
+        results = session.exec(statement2)
+        for angebot in results:
+            assert angebot.varianten[0].version == "test"
