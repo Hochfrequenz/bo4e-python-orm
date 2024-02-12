@@ -9,10 +9,9 @@ import os
 import borm.models  # noqa # pylint: disable=unused-import
 
 # Import all the models, so that Base has them before being
-# imported by Alembic
+# imported by Alembic, e.g. MappingBase will be imported by alembic (cf. db/*_db/migrations/env.py). This module is also
+# imported by the create_db function.
 from borm.db.base_class import MappingBase, mapper_registry  # noqa # pylint: disable=unused-import
-
-# import borm.models.many  # noqa # pylint: disable=unused-import #type: import-untyped
 
 
 def import_all_modules(package):  # type: ignore[no-untyped-def]
