@@ -8,7 +8,7 @@ annotated-types==0.6.0
     # via pydantic
 argcomplete==3.2.2
     # via datamodel-code-generator
-black==24.1.1
+black==24.2.0
     # via datamodel-code-generator
 bo4e-python-generator @ git+https://github.com/bo4e/BO4E-Python-Generator.git@2cd5be510d661d645efa7e8811088c00c36a16b3
     # via -r dev_requirements/requirements-init_bo4e.in
@@ -29,7 +29,7 @@ click==8.1.7
     #   bo4e-schema-tool
 colorama==0.4.6
     # via click
-cryptography==42.0.2
+cryptography==42.0.3
     # via pyjwt
 datamodel-code-generator==0.25.3
     # via bo4e-python-generator
