@@ -14,7 +14,7 @@ colorama==0.4.6
     # via colorlog
 colorlog==6.8.2
     # via -r requirements.in
-cryptography==42.0.2
+cryptography==42.0.3
     # via -r requirements.in
 greenlet==3.0.3
     # via
@@ -40,7 +40,7 @@ pymysql==1.1.0
     # via -r requirements.in
 python-dotenv==1.0.1
     # via -r requirements.in
-sqlalchemy==2.0.26
+sqlalchemy==2.0.27
     # via
     #   -r requirements.in
     #   alembic
