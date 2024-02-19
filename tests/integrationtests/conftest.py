@@ -1,3 +1,5 @@
+from typing import Generator
+
 import pytest
 from sqlmodel import Session, SQLModel
 
@@ -5,7 +7,7 @@ from borm.db.postgresql_db.create_db import engine
 
 
 @pytest.fixture(scope="function")
-def initialize_session():  # type: ignore[no-untyped-def]
+def initialize_session() -> Generator[Session, None, None]:
     session = Session(engine)
     # Teardown: close session
     yield session

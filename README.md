@@ -7,7 +7,12 @@
 ![Black status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Formatting/badge.svg)
 
 A ORM tool to map between SQL databases and BO4E classes using:
-...
+- SQLModel (https://sqlmodel.tiangolo.com) for the ORM
+- BO4E-Schema-Tool (https://pypi.org/project/BO4E-Schema-Tool) to pull and modify an existing BO4E version
+- BO4E-Python-Generator (https://pypi.org/project/BO4E-Python-Generator) to generate SQLModel classes from the BO4E schema
+- Docker Container (https://www.docker.com) to create the database with
+- PostgreSQL (https://www.postgresql.org)
+  (- In principle, Alembic (https://alembic.sqlalchemy.org) is supported for migrations, but not further supported at the moment)
 
 ### Installation
 
@@ -16,7 +21,7 @@ It will also be [available on pypi](https://pypi.org/project/borm/).
 pip install borm
 ```
 
-### Documentation
+### Description
 
 To setup a test db (postgresql) run the following in your tox env (see below):
 ```bash
@@ -24,10 +29,6 @@ tox -e setup_testpostgresql
 ```
 Make sure that your local host is running.
 
-Second, the alembic migration is done running:
-```bash
-tox -e migration
-```
 Alternatively, an existing bo4e version can be pulled via:
 ```bash
 tox -e init_bo4e
@@ -36,7 +37,6 @@ This uses two other tools:
 https://github.com/bo4e/BO4E-Schema-Tool
 and
 https://github.com/bo4e/BO4E-Python-Generator
-(For now, specific branches are used).
 
 Make sure you specify the version in tox.ini via the -t flag.
 
@@ -50,11 +50,14 @@ Enter the following to delete the test db:
 ```bash
 tox -e remove_testpostgresql
 ```
+In order to get a better understanding how this ORM works, you might want to have a look at the tests in the tests folder.
 
+In principle, alembic migrations are supported, e.g. by running:
+```bash
+tox -e migration
+```
+However, this is not further supported at the moment.
 
-## How to use this Repository on Your Machine
-
-Follow the instructions in our [Python template repository](https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine).
 
 ## Contribute
 

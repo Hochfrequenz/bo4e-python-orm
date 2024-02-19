@@ -1,0 +1,11 @@
+[pylint]
+#run for the code generated files
+#know things to be fixed:
+disable =
+    R0801, # disable similar lines
+    C0114,  # disable missing-module-docstring
+    C0115,  # disable missing-class-docstring
+    W0611, # disable unused-import
+    C0301, # disable line-too-long ->lines in comments too long
+    C0302, # disable too-many-lines -> many-many relationship classes
+[pylint."MESSAGES CONTROL"]
