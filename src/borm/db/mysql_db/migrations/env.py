@@ -1,13 +1,18 @@
+"""
+This sets up the environment for alembic migrations.
+"""
+
 from logging.config import fileConfig
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from borm.db.base import MappingBase
+from borm.db.base import MappingBase  # type: ignore[attr-defined]
 from borm.db.mysql_db.auxiliary import get_url
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
+# pylint: disable=no-member
 config = context.config
 
 # Interpret the config file for Python logging.
@@ -51,9 +56,9 @@ def run_migrations_online() -> None:
 
     """
     configuration = config.get_section(config.config_ini_section)
-    configuration["sqlalchemy.url"] = get_url()
+    configuration["sqlalchemy.url"] = get_url()  # type: ignore[index]
     connectable = engine_from_config(
-        configuration,
+        configuration,  # type: ignore[arg-type]
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
