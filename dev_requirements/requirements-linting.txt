@@ -4,9 +4,7 @@
 #
 #    pip-compile dev_requirements/requirements-linting.in
 #
-astroid==3.0.1
-    # via pylint
-colorama==0.4.6
+astroid==3.1.0
     # via pylint
 dill==0.3.7
     # via pylint
@@ -16,7 +14,7 @@ mccabe==0.7.0
     # via pylint
 platformdirs==3.1.0
     # via pylint
-pylint==3.0.3
+pylint==3.1.0
     # via -r dev_requirements/requirements-linting.in
 tomlkit==0.11.6
     # via pylint
