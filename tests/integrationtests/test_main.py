@@ -1,10 +1,11 @@
+from datetime import datetime
 from decimal import Decimal
 
 import pytest
 from sqlalchemy import Inspector, inspect
 from sqlmodel import select
 
-from borm.models import Angebotsvariante, Unterschrift, Vertrag, Zaehler
+from borm.models import Angebotsvariante, Tarifeinschraenkung, Unterschrift, Vertrag, Zaehler, ZusatzAttribut
 from borm.models.bo.angebot import Angebot
 from borm.models.bo.geschaeftspartner import Geschaeftspartner
 
@@ -150,3 +151,37 @@ class TestAngebot:
         results = session.exec(statement2)
         for angebot in results:
             assert angebot.varianten[0].version == "test"
+
+    def test_add_and_read_row_lists(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
+        """
+        test to add a row to an existing table and read it
+        """
+        session = initialize_session
+        testtarifeinschraenkung = Tarifeinschraenkung(zusatzprodukte=["produkt1", "produkt2", "produkt3"])
+        session.add(testtarifeinschraenkung)
+        session.commit()
+
+        # read and check row
+        statement = select(Tarifeinschraenkung)
+        retrieved_tarifeinschraenkung = session.exec(statement).unique()
+        for tarifeinschraenkung in retrieved_tarifeinschraenkung:
+            assert tarifeinschraenkung.zusatzprodukte[0] == "produkt1"
+
+    def test_zusatz_attribut(self, initialize_session) -> None:  # type: ignore[no-untyped-def]
+        """
+        test to add a row to an existing table and read it
+        """
+        session = initialize_session
+        test_zusatz_attribut = ZusatzAttribut(name="erstes", wert=Decimal("12.25"))
+        test_zusatz_attribut2 = ZusatzAttribut(name="zweites", wert=datetime(2024, 1, 1))
+        session.add(test_zusatz_attribut)
+        session.add(test_zusatz_attribut2)
+        session.commit()
+
+        # read and check row
+        statement = select(ZusatzAttribut)
+        retrieved_zusatz_attribut = session.exec(statement).unique()
+        for zusatz_attribut in retrieved_zusatz_attribut:
+            assert (zusatz_attribut.name == "erstes" and zusatz_attribut.wert == Decimal("12.25")) or (
+                zusatz_attribut.name == "zweites" and zusatz_attribut.wert == datetime(2024, 1, 1)
+            )
