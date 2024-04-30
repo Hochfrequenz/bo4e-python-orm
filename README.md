@@ -14,6 +14,9 @@ A ORM tool to map between SQL databases and BO4E classes using:
 - PostgreSQL (https://www.postgresql.org)
   (- In principle, Alembic (https://alembic.sqlalchemy.org) is supported for migrations, but not further supported at the moment)
 
+The idea of this tool is to provide a first instance of an ORM which has been generated from a specific BO4E version. For further information of the functionalities of this ORM framework, please refer to the documentation of [SQLModel](https://sqlmodel.tiangolo.com).
+Please note that this is a very early version of the ORM and might not be fully functional yet.
+
 ### Installation
 
 It will also be [available on pypi](https://pypi.org/project/borm/).
