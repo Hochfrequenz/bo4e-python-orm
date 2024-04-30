@@ -4,15 +4,13 @@ This is similar to the bash command `mv example.env .env`.
 It is used in all tox environments except the linting environment.
 """
 
-import os.path
-import sys
 from pathlib import Path
 from shutil import copyfile
 
 from borm.logger import logger
 
 
-def create_env_file(directory_path):
+def create_env_file(directory_path: Path) -> None:
     """
     Checks if a file with the file name `destination_file_name` exists.
     If yes, nothing will be done.
@@ -40,7 +38,7 @@ def create_env_file(directory_path):
             logger.info("🤗 And we are done.\nPlease update some credentials for your need, e.g. database credentials.")
         except FileNotFoundError:
             logger.info(
-                "😞 I am so sorry, but the %s file is gone. Please ask someone of you colleagues " "to help you.",
+                "😞 I am so sorry, but the %s file is gone. Please ask someone of you colleagues to help you.",
                 source_file_name,
             )
 
