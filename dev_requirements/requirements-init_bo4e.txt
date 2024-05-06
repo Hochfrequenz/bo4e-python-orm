@@ -12,7 +12,7 @@ black==24.4.2
     # via datamodel-code-generator
 bo4e-python-generator==0.0.9
     # via -r dev_requirements/requirements-init_bo4e.in
-bo4e-schema-tool==0.0.5
+bo4e-schema-tool==0.0.7
     # via -r dev_requirements/requirements-init_bo4e.in
 certifi==2024.2.2
     # via requests
