@@ -10,11 +10,9 @@ annotated-types==0.6.0
     # via pydantic
 cffi==1.16.0
     # via cryptography
-colorama==0.4.6
-    # via colorlog
 colorlog==6.8.2
     # via -r requirements.in
-cryptography==42.0.5
+cryptography==42.0.6
     # via -r requirements.in
 greenlet==3.0.3
     # via
@@ -54,5 +52,3 @@ typing-extensions==4.9.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-tzdata==2024.1
-    # via psycopg
