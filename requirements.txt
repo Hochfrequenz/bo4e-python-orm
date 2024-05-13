@@ -22,7 +22,7 @@ mako==1.2.4
     # via alembic
 markupsafe==2.1.5
     # via mako
-psycopg==3.1.18
+psycopg==3.1.19
     # via -r requirements.in
 pycparser==2.21
     # via cffi
