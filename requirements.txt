@@ -34,7 +34,7 @@ pydantic-core==2.18.2
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
-pymysql==1.1.0
+pymysql==1.1.1
     # via -r requirements.in
 python-dotenv==1.0.1
     # via -r requirements.in
