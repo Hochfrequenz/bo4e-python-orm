@@ -65,11 +65,11 @@ platformdirs==4.2.0
     # via black
 pycparser==2.21
     # via cffi
-pydantic[email]==2.7.1
+pydantic[email]==2.7.2
     # via
     #   bo4e-schema-tool
     #   datamodel-code-generator
-pydantic-core==2.18.2
+pydantic-core==2.18.3
     # via pydantic
 pygithub==2.2.0
     # via bo4e-schema-tool
