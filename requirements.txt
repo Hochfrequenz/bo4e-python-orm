@@ -26,11 +26,11 @@ psycopg==3.2.1
     # via -r requirements.in
 pycparser==2.21
     # via cffi
-pydantic==2.7.4
+pydantic==2.8.2
     # via
     #   -r requirements.in
     #   sqlmodel
-pydantic-core==2.18.4
+pydantic-core==2.20.1
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
