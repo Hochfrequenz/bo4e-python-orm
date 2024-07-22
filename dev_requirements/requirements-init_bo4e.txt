@@ -27,7 +27,7 @@ click==8.1.7
     #   black
     #   bo4e-python-generator
     #   bo4e-schema-tool
-cryptography==42.0.8
+cryptography==43.0.0
     # via pyjwt
 datamodel-code-generator==0.25.3
     # via bo4e-python-generator
