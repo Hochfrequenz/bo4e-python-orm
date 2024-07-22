@@ -43,7 +43,7 @@ sqlalchemy==2.0.31
     #   -r requirements.in
     #   alembic
     #   sqlmodel
-sqlmodel==0.0.19
+sqlmodel==0.0.21
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
