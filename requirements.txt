@@ -24,8 +24,10 @@ mako==1.2.4
     # via alembic
 markupsafe==2.1.5
     # via mako
-psycopg==3.1.18
+psycopg[binary]==3.1.18
     # via -r requirements.in
+psycopg-binary==3.1.18
+    # via psycopg
 pycparser==2.21
     # via cffi
 pydantic==2.7.1
