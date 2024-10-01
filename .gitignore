@@ -138,5 +138,3 @@ src/_your_package_version.py
 src/borm/models/**
 
 bo4e_schemas/output/**
-
-src/_borm_version.py
