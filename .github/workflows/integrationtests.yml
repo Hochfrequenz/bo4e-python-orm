@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Create .env file
-        run: cp "borm/db/postgresql_db/.env.example" .env
+        run: cp "src/borm/db/postgresql_db/.env.example" .env
       - name: Start containers
-        run: docker compose -f "borm/db/postgresql_db/docker-compose.yaml" up -d
+        run: docker compose -f "src/borm/db/postgresql_db/docker-compose.yaml" up -d
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
