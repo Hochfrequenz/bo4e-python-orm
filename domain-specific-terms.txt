@@ -1,1 +1,22 @@
 # contains 1 lowercase word per line which are ignored in the spell_check
+oder
+adresse
+als
+ist
+alle
+modell
+variante
+ende
+objekt
+titel
+multiplikation
+relativ
+absolut
+bund
+temperatur
+paket
+vektor
+fo
+nd
+contrl
+zar
