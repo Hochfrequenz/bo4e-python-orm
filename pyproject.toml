@@ -16,8 +16,50 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12"
 ]
-dependencies = []     # add all the dependencies from requirements.in here, too
+dependencies = [
+    "alembic>=1.12.0",
+    "colorlog",
+    "greenlet>=3.0.0",
+    "psycopg>=3.1",
+    "pydantic>=2.0.0",
+    "pyhumps",
+    "python-dotenv",
+    "SQLAlchemy>=2.0.22",
+    "pymysql",
+    "cryptography",
+    "sqlmodel>=0.0.14"
+]     # add all the dependencies from requirements.in here, too
 dynamic = ["readme", "version"]
+
+
+[project.optional-dependencies]
+coverage = [
+    "coverage==7.6.0"
+]
+formatting = [
+    "black==24.4.2",
+    "isort==5.13.2"
+]
+init_bo4e = [
+    "bo4e-python-generator==0.0.10",
+    "bo4e-schema-tool==0.0.7"
+]
+linting = [
+    "pylint==3.2.6"
+]
+spellcheck = [
+    "codespell==2.3.0"
+]
+test_packaging = [
+    "build==1.2.1",
+    "twine==5.1.1"
+]
+tests = [
+    "pytest==8.3.1"
+]
+type_check = [
+    "mypy==1.11.0"
+]
 
 [project.urls]
 Changelog = "https://github.com/Hochfrequenz/bo4e-python-orm/releases"
