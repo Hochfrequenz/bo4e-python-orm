@@ -8,7 +8,7 @@ annotated-types==0.6.0
     # via pydantic
 argcomplete==3.2.2
     # via datamodel-code-generator
-black==24.4.2
+black==24.10.0
     # via datamodel-code-generator
 bo4e-python-generator==0.0.10
     # via -r dev_requirements/requirements-init_bo4e.in
