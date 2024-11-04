@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-alembic==1.13.2
+alembic==1.13.3
     # via -r requirements.in
 annotated-types==0.6.0
     # via pydantic
@@ -12,9 +12,9 @@ cffi==1.16.0
     # via cryptography
 colorlog==6.8.2
     # via -r requirements.in
-cryptography==43.0.0
+cryptography==43.0.3
     # via -r requirements.in
-greenlet==3.0.3
+greenlet==3.1.1
     # via
     #   -r requirements.in
     #   sqlalchemy
@@ -22,7 +22,7 @@ mako==1.2.4
     # via alembic
 markupsafe==2.1.5
     # via mako
-psycopg==3.2.1
+psycopg==3.2.3
     # via -r requirements.in
 pycparser==2.21
     # via cffi
@@ -38,7 +38,7 @@ pymysql==1.1.1
     # via -r requirements.in
 python-dotenv==1.0.1
     # via -r requirements.in
-sqlalchemy==2.0.31
+sqlalchemy==2.0.36
     # via
     #   -r requirements.in
     #   alembic

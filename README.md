@@ -6,6 +6,9 @@
 ![Linting status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Linting/badge.svg)
 ![Black status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Formatting/badge.svg)
 
+At this point this repository serves only as an exemplary implementation of a BO4E ORM. The main work (i.e. the generation of SQL Model code) will be done in the [BO4E-CLI-Tool](https://github.com/bo4e/BO4E-CLI)
+
+
 A ORM tool to map between SQL databases and BO4E classes using:
 - SQLModel (https://sqlmodel.tiangolo.com) for the ORM
 - BO4E-Schema-Tool (https://pypi.org/project/BO4E-Schema-Tool) to pull and modify an existing BO4E version
