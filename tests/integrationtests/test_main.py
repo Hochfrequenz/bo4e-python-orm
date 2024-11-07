@@ -5,9 +5,9 @@ import pytest
 from sqlalchemy import Inspector, inspect
 from sqlmodel import select
 
-from borm.models import Angebotsvariante, Tarifeinschraenkung, Unterschrift, Vertrag, Zaehler, ZusatzAttribut
-from borm.models.bo.angebot import Angebot
-from borm.models.bo.geschaeftspartner import Geschaeftspartner
+from src.borm.models import Angebotsvariante, Tarifeinschraenkung, Unterschrift, Vertrag, Zaehler, ZusatzAttribut
+from src.borm.models.bo.angebot import Angebot
+from src.borm.models.bo.geschaeftspartner import Geschaeftspartner
 
 
 class TestAngebot:
