@@ -40,8 +40,9 @@ formatting = [
     "isort==5.13.2"
 ]
 init_bo4e = [
-    "bo4e-python-generator",
-    "bo4e-schema-tool==0.0.9"
+    "bo4e-python-generator==0.0.10",
+    "bo4e-schema-tool==0.0.9",
+    "datamodel-code-generator==0.25.9"
 ]
 linting = [
     "pylint==3.2.6"
