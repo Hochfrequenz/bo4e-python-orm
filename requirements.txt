@@ -8,7 +8,7 @@ alembic==1.13.3
     # via borm (pyproject.toml)
 annotated-types==0.6.0
     # via pydantic
-cffi==1.16.0
+cffi==1.17.1
     # via cryptography
 colorama==0.4.6
     # via colorlog
