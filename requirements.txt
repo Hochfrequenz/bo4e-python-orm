@@ -26,7 +26,7 @@ markupsafe==2.1.5
     # via mako
 psycopg==3.2.3
     # via borm (pyproject.toml)
-pycparser==2.21
+pycparser==2.22
     # via cffi
 pydantic==2.9.2
     # via
