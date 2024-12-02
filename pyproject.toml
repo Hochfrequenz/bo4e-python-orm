@@ -42,7 +42,7 @@ formatting = [
 init_bo4e = [
     "bo4e-python-generator==0.0.10",
     "bo4e-schema-tool==0.0.9",
-    "datamodel-code-generator==0.25.9"
+    "datamodel-code-generator==0.26.3"
 ]
 linting = [
     "pylint==3.3.1"
