@@ -14,7 +14,7 @@ colorama==0.4.6
     # via colorlog
 colorlog==6.9.0
     # via borm (pyproject.toml)
-cryptography==43.0.3
+cryptography==44.0.0
     # via borm (pyproject.toml)
 greenlet==3.1.1
     # via
