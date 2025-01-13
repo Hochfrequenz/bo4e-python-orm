@@ -40,7 +40,7 @@ pymysql==1.1.1
     # via borm (pyproject.toml)
 python-dotenv==1.0.1
     # via borm (pyproject.toml)
-sqlalchemy==2.0.36
+sqlalchemy==2.0.37
     # via
     #   alembic
     #   borm (pyproject.toml)
