@@ -24,7 +24,7 @@ mako==1.3.8
     # via alembic
 markupsafe==2.1.5
     # via mako
-psycopg==3.2.3
+psycopg==3.2.4
     # via borm (pyproject.toml)
 pycparser==2.22
     # via cffi
