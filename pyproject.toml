@@ -52,7 +52,7 @@ spell_check = [
 ]
 test_packaging = [
     "build==1.2.2.post1",
-    "twine==6.0.1"
+    "twine==6.1.0"
 ]
 tests = [
     "pytest==8.3.4"
