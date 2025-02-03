@@ -37,7 +37,7 @@ coverage = [
 ]
 formatting = [
     "black==24.10.0",
-    "isort==5.13.2"
+    "isort==6.0.0"
 ]
 init_bo4e = [
     "bo4e-python-generator==0.0.10",
