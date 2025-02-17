@@ -32,7 +32,7 @@ pydantic==2.9.2
     # via
     #   borm (pyproject.toml)
     #   sqlmodel
-pydantic-core==2.23.4
+pydantic-core==2.29.0
     # via pydantic
 pyhumps==3.8.0
     # via borm (pyproject.toml)
