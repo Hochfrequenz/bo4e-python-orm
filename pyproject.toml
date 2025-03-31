@@ -45,7 +45,7 @@ init_bo4e = [
     "datamodel-code-generator==0.25.9"
 ]
 linting = [
-    "pylint==3.3.4"
+    "pylint==3.3.6"
 ]
 spell_check = [
     "codespell==2.3.0"
