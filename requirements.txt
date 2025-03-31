@@ -4,7 +4,7 @@
 #
 #    pip-compile pyproject.toml
 #
-alembic==1.14.1
+alembic==1.15.2
     # via borm (pyproject.toml)
 annotated-types==0.7.0
     # via pydantic
