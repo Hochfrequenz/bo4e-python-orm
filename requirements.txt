@@ -45,7 +45,7 @@ sqlalchemy==2.0.37
     #   alembic
     #   borm (pyproject.toml)
     #   sqlmodel
-sqlmodel==0.0.22
+sqlmodel==0.0.24
     # via borm (pyproject.toml)
 typing-extensions==4.12.2
     # via
