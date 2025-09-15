@@ -54,5 +54,5 @@ typing-extensions==4.13.2
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-tzdata==2025.1
+tzdata==2025.2
     # via psycopg
