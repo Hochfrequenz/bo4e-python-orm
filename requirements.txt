@@ -28,7 +28,7 @@ psycopg==3.2.6
     # via borm (pyproject.toml)
 pycparser==2.22
     # via cffi
-pydantic==2.9.2
+pydantic==2.11.9
     # via
     #   borm (pyproject.toml)
     #   sqlmodel
