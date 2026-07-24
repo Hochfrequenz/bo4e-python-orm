@@ -12,14 +12,39 @@ jobs:
         linter-env: ["linting", "type_check", "spell_check"]
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9.0.0
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Dependencies
+      - name: Install Dependencies (linting)
+        if: matrix.linter-env == 'linting'
+        run: uv sync --group linting --group init_bo4e
+      - name: Install Dependencies (type_check)
+        if: matrix.linter-env == 'type_check'
+        run: uv sync --group type_check --group init_bo4e
+      - name: Install Dependencies (spell_check)
+        if: matrix.linter-env == 'spell_check'
+        run: uv sync --group spell_check
+      - name: Generate BO4E models
+        if: matrix.linter-env == 'linting' || matrix.linter-env == 'type_check'
         run: |
-          python -m pip install --upgrade pip
-          pip install tox
-      - name: Run ${{ matrix.linter-env }} via Tox
+          mkdir -p bo4e_schemas
+          cd bo4e_schemas
+          uv run bost -t v202401.0.1 -o ./
+          uv run bo4e-generator -i ./ -o ../src/borm/models -ot sql_model
+      - name: Run pylint
+        if: matrix.linter-env == 'linting'
         run: |
-          tox -e ${{ matrix.linter-env }}
+          uv run pylint src/borm --disable R0801 --ignore-paths 'src/borm/models'
+          uv run pylint src/borm/models --rcfile=./.pylintrc_autogen_code
+          uv run pylint tests --rcfile=tests/.pylintrc
+      - name: Run mypy
+        if: matrix.linter-env == 'type_check'
+        run: |
+          uv run mypy --show-error-codes tests
+          uv run mypy --show-error-codes src/borm
+      - name: Run codespell
+        if: matrix.linter-env == 'spell_check'
+        run: |
+          uv run codespell --ignore-words=domain-specific-terms.txt src/
+          uv run codespell --ignore-words=domain-specific-terms.txt README.md
