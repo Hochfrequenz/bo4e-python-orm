@@ -69,4 +69,4 @@ However, this is not further supported at the moment.
 ## Contribute
 
 You are very welcome to contribute to this repository by opening a pull request against the main branch.
-If you use a windows OS you might need to change `psycopg` -> `psycopg[binary]` in `pyproject.toml`.
+If you use a Windows OS, you might need to change `psycopg` -> `psycopg[binary]` in `pyproject.toml`.

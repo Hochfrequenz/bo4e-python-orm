@@ -28,7 +28,7 @@ dependencies = [
     "pymysql",
     "cryptography",
     "sqlmodel==0.0.24"
-]     # add all the dependencies from pyproject.toml here, toodynamic = ["readme", "version"]
+]
 dynamic = ["readme", "version"]
 
 [project.urls]
