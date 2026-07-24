@@ -27,7 +27,7 @@ dependencies = [
     "SQLAlchemy>=2.0.22",
     "pymysql",
     "cryptography",
-    "sqlmodel==0.0.24"
+    "sqlmodel==0.0.39"
 ]
 dynamic = ["readme", "version"]
 
