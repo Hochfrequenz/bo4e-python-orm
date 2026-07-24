@@ -31,36 +31,6 @@ dependencies = [
 ]     # add all the dependencies from pyproject.toml here, toodynamic = ["readme", "version"]
 dynamic = ["readme", "version"]
 
-[project.optional-dependencies]
-coverage = [
-    "coverage==7.8.2"
-]
-formatting = [
-    "black==25.1.0",
-    "isort==6.0.1"
-]
-init_bo4e = [
-    "bo4e-python-generator==0.0.10",
-    "bo4e-schema-tool==0.0.9",
-    "datamodel-code-generator==0.25.9"
-]
-linting = [
-    "pylint==3.3.6"
-]
-spell_check = [
-    "codespell==2.4.1"
-]
-test_packaging = [
-    "build==1.2.2.post1",
-    "twine==6.1.0"
-]
-tests = [
-    "pytest==8.4.2"
-]
-type_check = [
-    "mypy==1.14.1"
-]
-
 [project.urls]
 Changelog = "https://github.com/Hochfrequenz/bo4e-python-orm/releases"
 Homepage = "https://github.com/Hochfrequenz/bo4e-python-orm"
@@ -79,7 +49,46 @@ max-line-length = 120
 requires = ["hatchling>=1.8.0", "hatch-vcs", "hatch-fancy-pypi-readme"]
 build-backend = "hatchling.build"
 
+[dependency-groups]
+tests = [
+    "pytest==8.4.2"
+]
+coverage = [
+    "coverage==7.8.2"
+]
+formatting = [
+    "black==25.1.0",
+    "isort==6.0.1"
+]
+init_bo4e = [
+    "bo4e-python-generator==0.0.10",
+    "bo4e-schema-tool==0.0.9",
+    "datamodel-code-generator>=0.27.1"
+]
+linting = [
+    "pylint==3.3.6",
+    {include-group = "tests"}
+]
+spell_check = [
+    "codespell==2.4.1"
+]
+type_check = [
+    "mypy==1.14.1",
+    {include-group = "tests"}
+]
+dev = [
+    "pre-commit",
+    {include-group = "tests"},
+    {include-group = "coverage"},
+    {include-group = "formatting"},
+    {include-group = "init_bo4e"},
+    {include-group = "linting"},
+    {include-group = "spell_check"},
+    {include-group = "type_check"}
+]
 
+[tool.uv]
+default-groups = []
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = "text/markdown"

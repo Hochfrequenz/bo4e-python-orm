@@ -29,38 +29,39 @@ pip install borm
 
 ### Description
 
-To setup a test db (postgresql) run the following in your tox env (see below):
+First, install the dev dependencies with [uv](https://docs.astral.sh/uv/):
 ```bash
-tox -e setup_testpostgresql
+uv sync --group dev
+```
+
+To setup a test db (postgresql), run the following from the `src` directory:
+```bash
+uv run python -m borm.db.postgresql_db.create_env_file
+docker compose -f borm/db/postgresql_db/docker-compose.yaml up -d
 ```
 Make sure that your local host is running.
 
-Alternatively, an existing bo4e version can be pulled via:
+Alternatively, an existing bo4e version can be pulled via (from a `bo4e_schemas` directory):
 ```bash
-tox -e init_bo4e
+uv run bost -t v202401.0.1 -o ./
+uv run bo4e-generator -i ./ -o ../src/borm/models -ot sql_model
 ```
 This uses two other tools:
 https://github.com/bo4e/BO4E-Schema-Tool
 and
 https://github.com/bo4e/BO4E-Python-Generator
 
-Make sure you specify the version in tox.ini via the -t flag.
+Make sure you specify the version via the `-t` flag.
 
-The fast way is to use:
+Enter the following (from `src/borm/db/postgresql_db`) to delete the test db:
 ```bash
-tox -e setup_bo4e
-```
-which combines the steps above.
-
-Enter the following to delete the test db:
-```bash
-tox -e remove_testpostgresql
+docker compose -f docker-compose.yaml down -v
 ```
 In order to get a better understanding how this ORM works, you might want to have a look at the tests in the tests folder.
 
-In principle, alembic migrations are supported, e.g. by running:
+In principle, alembic migrations are supported, e.g. by running (from `src/borm/db/postgresql_db`):
 ```bash
-tox -e migration
+uv run alembic upgrade head
 ```
 However, this is not further supported at the moment.
 
@@ -68,4 +69,4 @@ However, this is not further supported at the moment.
 ## Contribute
 
 You are very welcome to contribute to this repository by opening a pull request against the main branch.
-If you use a windows OS you might need to change `psycopg` -> `psycopg[binary]` in the requirements.
+If you use a windows OS you might need to change `psycopg` -> `psycopg[binary]` in `pyproject.toml`.
