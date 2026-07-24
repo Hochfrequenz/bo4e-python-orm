@@ -79,15 +79,15 @@ wheels = [
 
 [[package]]
 name = "bo4e-python-generator"
-version = "0.0.10"
+version = "0.0.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
     { name = "datamodel-code-generator" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f8/d1/47c5427c3fb3cd4584d7492130fc9959f99dfda83d39d7629cb44007074b/bo4e_python_generator-0.0.10.tar.gz", hash = "sha256:59eecc32ef3cbd2ac4813fa7f7d881cad23b95ca1244104d39d11437b33d7734", size = 22236, upload-time = "2024-07-19T11:05:41.443Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/96/47/26b25b9b70b266803fe323d4fb8a10cc33d7827b54daccd437632b2a3b09/bo4e_python_generator-0.0.13.tar.gz", hash = "sha256:ee65106b756dfa4ae1ed325fca1d488e4b7f81338cf6786ec337843886222bb5", size = 24053, upload-time = "2024-07-30T12:26:05.379Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/00/80/1513e241a469e17c04f3e2b4859aa576aa132bc047ab39437445161f7683/bo4e_python_generator-0.0.10-py3-none-any.whl", hash = "sha256:101e2703071bf45627f0ca8b5e48a1f4319b34b48eb7518aec4528cc89970038", size = 17433, upload-time = "2024-07-19T11:05:40.125Z" },
+    { url = "https://files.pythonhosted.org/packages/7f/c9/b8b1d25b5058febd4832d3363fcd454a5d7c1701a6e58f0ab905e01989a8/bo4e_python_generator-0.0.13-py3-none-any.whl", hash = "sha256:5d3488838a004f08a21f217c6a9d727947ad207255850773256527485bd43a03", size = 19707, upload-time = "2024-07-30T12:26:04.303Z" },
 ]
 
 [[package]]
@@ -183,7 +183,7 @@ requires-dist = [
 coverage = [{ name = "coverage", specifier = "==7.8.2" }]
 dev = [
     { name = "black", specifier = "==25.1.0" },
-    { name = "bo4e-python-generator", specifier = "==0.0.10" },
+    { name = "bo4e-python-generator", specifier = "==0.0.13" },
     { name = "bo4e-schema-tool", specifier = "==0.0.9" },
     { name = "codespell", specifier = "==2.4.1" },
     { name = "coverage", specifier = "==7.8.2" },
@@ -199,7 +199,7 @@ formatting = [
     { name = "isort", specifier = "==5.13.2" },
 ]
 init-bo4e = [
-    { name = "bo4e-python-generator", specifier = "==0.0.10" },
+    { name = "bo4e-python-generator", specifier = "==0.0.13" },
     { name = "bo4e-schema-tool", specifier = "==0.0.9" },
     { name = "datamodel-code-generator", specifier = "==0.25.9" },
 ]
@@ -608,8 +608,8 @@ name = "email-validator"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "dnspython" },
-    { name = "idna" },
+    { name = "dnspython", marker = "python_full_version < '4'" },
+    { name = "idna", marker = "python_full_version < '4'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f5/22/900cb125c76b7aaa450ce02fd727f452243f2e91a61af068b40adba60ea9/email_validator-2.3.0.tar.gz", hash = "sha256:9fc05c37f2f6cf439ff414f8fc46d917929974a82244c20eb10231ba60c54426", size = 51238, upload-time = "2025-08-26T13:09:06.831Z" }
 wheels = [
@@ -1012,7 +1012,7 @@ wheels = [
 
 [package.optional-dependencies]
 email = [
-    { name = "email-validator" },
+    { name = "email-validator", marker = "python_full_version < '4'" },
 ]
 
 [[package]]
