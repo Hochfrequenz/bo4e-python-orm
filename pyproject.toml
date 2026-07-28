@@ -57,7 +57,7 @@ coverage = [
     "coverage==7.15.2"
 ]
 formatting = [
-    "black==25.1.0",
+    "black==26.5.1",
     "isort==5.13.2"
 ]
 init_bo4e = [
