@@ -51,7 +51,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 tests = [
-    "pytest==8.4.2"
+    "pytest==9.1.1"
 ]
 coverage = [
     "coverage==7.15.2"
