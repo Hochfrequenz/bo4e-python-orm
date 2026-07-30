@@ -2,12 +2,11 @@ from datetime import datetime
 from decimal import Decimal
 
 import pytest
-from sqlalchemy import Inspector, inspect
-from sqlmodel import select
-
 from borm.models import Angebotsvariante, Tarifeinschraenkung, Unterschrift, Vertrag, Zaehler, ZusatzAttribut
 from borm.models.bo.angebot import Angebot
 from borm.models.bo.geschaeftspartner import Geschaeftspartner
+from sqlalchemy import Inspector, inspect
+from sqlmodel import select
 
 
 class TestAngebot:

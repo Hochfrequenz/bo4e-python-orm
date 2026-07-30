@@ -14,4 +14,5 @@ class MappingBase(DeclarativeBase):
     """
     Base class which inherits from DeclarativeBase
     """
+
     metadata = metadata
