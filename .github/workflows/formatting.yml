@@ -2,13 +2,25 @@ name: "Formatting"
 
 on: [push]
 jobs:
+  # The matrix "tool" values ("black", "isort") and the job's required-check names they produce
+  # ("black (3.11, ubuntu-latest, black)", "black (3.11, ubuntu-latest, isort)") are kept unchanged
+  # on purpose, even though both now run ruff under the hood - renaming them would leave the
+  # required status checks configured on the branch protection ruleset permanently pending.
+  # Renaming these labels for real requires updating that ruleset in the same change, which is an
+  # admin-level, org-visible change to what blocks merges and is intentionally out of scope here.
   black:
+    name: black (${{ matrix.python-version }}, ${{ matrix.os }}, ${{ matrix.tool }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-version: ["3.11"]
         os: [ubuntu-latest]
         tool: ["black", "isort"]
+        include:
+          - tool: "black"
+            command: "ruff format --check ."
+          - tool: "isort"
+            command: "ruff check --select I ."
     steps:
       - uses: actions/checkout@v7
       - name: Install uv
@@ -16,6 +28,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: uv sync --group formatting
+        run: uv sync --group linting
       - name: ${{ matrix.tool }} Code Formatter
-        run: uv run ${{ matrix.tool }} . --check
+        run: uv run ${{ matrix.command }}

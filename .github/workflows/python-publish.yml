@@ -64,11 +64,9 @@
            cd bo4e_schemas
            uv run bost -t v202401.0.1 -o ./
            uv run bo4e-generator -i ./ -o ../src/borm/models -ot sql_model
-       - name: Run pylint
+       - name: Run ruff check
          run: |
-           uv run pylint src/borm --disable R0801 --ignore-paths 'src/borm/models'
-           uv run pylint src/borm/models --rcfile=./.pylintrc_autogen_code
-           uv run pylint tests --rcfile=tests/.pylintrc
+           uv run ruff check src/borm tests
 
        # coverage
        - name: Install Dependencies (coverage)

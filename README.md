@@ -4,7 +4,7 @@
 ![Unittests status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/tests/badge.svg)
 ![Coverage status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Coverage/badge.svg)
 ![Linting status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Linting/badge.svg)
-![Black status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Formatting/badge.svg)
+![Formatting status badge](https://github.com/Hochfrequenz/bo4e-python-orm/workflows/Formatting/badge.svg)
 
 At this point this repository serves only as an exemplary implementation of a BO4E ORM. The main work (i.e. the generation of SQL Model code) will be done in the [BO4E-CLI-Tool](https://github.com/bo4e/BO4E-CLI)
 
