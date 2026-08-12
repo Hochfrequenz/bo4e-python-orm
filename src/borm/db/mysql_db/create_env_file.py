@@ -1,6 +1,6 @@
 """
-This python script copies the env.example to .env if .env does not already exists.
-This is similar to the bash command `mv example.env .env`.
+This python script copies .env.example to .env if .env does not already exist.
+This is similar to the shell command `cp .env.example .env`.
 Run it manually via ``uv run python -m borm.db.mysql_db.create_env_file`` for local MySQL setup;
 unlike the PostgreSQL variant it is not currently invoked by any CI workflow.
 """
