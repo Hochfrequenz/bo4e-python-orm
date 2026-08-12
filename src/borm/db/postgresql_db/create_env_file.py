@@ -1,7 +1,9 @@
 """
-This python script copies the env.example to .env if .env does not already exists.
-This is similar to the bash command `mv example.env .env`.
-It is used in all tox environments except the linting environment.
+This python script copies .env.example to .env if .env does not already exist.
+This is similar to the shell command `cp .env.example .env`.
+It is run as a CI workflow step (``uv run python -m borm.db.postgresql_db.create_env_file`` in
+unittests.yml, coverage.yml, integrationtests.yml and python-publish.yml) and documented for
+local setup in the README.
 """
 
 from pathlib import Path
