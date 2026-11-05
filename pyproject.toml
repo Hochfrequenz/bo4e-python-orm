@@ -79,7 +79,7 @@ init_bo4e = [
     "datamodel-code-generator==0.25.9"
 ]
 linting = [
-    "ruff==0.16.2",
+    "ruff==0.16.3",
 ]
 spell_check = [
     "codespell==2.4.3"
